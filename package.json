@@ -1,7 +1,6 @@
 {
   "name": "pantoen",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "express": "^4.16.4"
@@ -21,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/flevenson/pantoen/issues"
   },
-  "homepage": "https://github.com/flevenson/pantoen#readme"
+  "homepage": "https://github.com/flevenson/pantoen#readme",
+  "description": ""
 }
