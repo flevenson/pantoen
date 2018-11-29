@@ -58,6 +58,7 @@ app.post('/api/v1/projects', (request, response) => {
 
 app.get('/api/v1/projects/:project_id/pallets', (request, response) => {
   const pallets = app.locals.pallets
+  console.log(pallets)
   const id = parseInt(request.params.project_id)
   const foundPallets = pallets.filter(pallet => pallet.project_id === id)
   if(!foundPallets) {
@@ -65,13 +66,15 @@ app.get('/api/v1/projects/:project_id/pallets', (request, response) => {
       error: `Project with an id of ${id} was not found.`
     })
   }
+  return response.status(200).json(foundPallets)
 })
 
-app.post('/api/v1/projects/:project_id/pallets', (request, resonse) => {
+app.post('/api/v1/projects/:project_id/pallets', (request, response) => {
   const pallet = request.body
+  const project_id  = parseInt(request.params.project_id)
   const id = app.locals.pallets[app.locals.pallets.length - 1].id + 1;
 
-  for(let requiredParameter of ['color_1', 'color_2', 'color_3', 'color_4', 'color_5', 'project_id']) {
+  for(let requiredParameter of ['color_1', 'color_2', 'color_3', 'color_4', 'color_5']) {
     if(!pallet[requiredParameter]) {
       return response.status(422).json({
         error: `Expected format: {name:<STRING>}. Missing the required parameter of ${requiredParameter}.`
@@ -79,7 +82,7 @@ app.post('/api/v1/projects/:project_id/pallets', (request, resonse) => {
     } 
   }
 
-  app.locals.pallets.push({ id, ...pallet})
+  app.locals.pallets.push({ id, ...pallet, project_id})
 
   return response.status(201).json({id})
 })
