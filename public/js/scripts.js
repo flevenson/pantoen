@@ -21,7 +21,9 @@ const addDigits = (code, digits) => {
 const randomizeColors = () => {
   const unlockedColors = document.querySelectorAll('.unlocked')
   unlockedColors.forEach(color => {
-    color.setAttribute('style', `background-color: ${randomHexGenerator()}`)
+    const randomColor = randomHexGenerator()
+    color.setAttribute('style', `background-color: ${randomColor}`)
+    color.nextSibling.nextSibling.children[1].innerText = randomColor
   })
 }
 
