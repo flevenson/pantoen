@@ -1,9 +1,10 @@
-document.querySelector()
+const randomizeBtn = document.querySelector('.randomize-btn')
+
 
 const randomHexGenerator = () => {
   let digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
   let code = '#'
-  console.log(addDigits(code, digits))
+  return addDigits(code, digits)
 }
 
 const addDigits = (code, digits) => {
@@ -16,3 +17,12 @@ const addDigits = (code, digits) => {
     return addDigits(newCode, digits)
   }
 }
+
+const randomizeColors = () => {
+  const unlockedColors = document.querySelectorAll('.unlocked')
+  unlockedColors.forEach(color => {
+    color.setAttribute('style', `background-color: ${randomHexGenerator()}`)
+  })
+}
+
+randomizeBtn.addEventListener('click', randomizeColors)
