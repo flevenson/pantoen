@@ -9,11 +9,11 @@ app.use(express.static('public'));
 app.locals.title = 'Projects';
 
 app.locals.projects = [
-{id: 1, name: 'Pallet One'},
-{id: 2, name: 'Pallet Two'}
+{id: 1, name: 'Project One'},
+{id: 2, name: 'Project Two'}
 ]
 
-app.locals.pallets = [
+app.locals.palettes = [
 {id:1, color_1: 'red', color_2: 'blue', color_3: 'orange', color_4: 'magenta', color_5: 'cornflowerblue', project_id:1},
 {id:2, color_1: 'yellow', color_2: 'white', color_3: 'grey', color_4: 'orange', color_5: 'pink', project_id:2},
 {id:3, color_1: 'pink', color_2: 'black', color_3: 'blue', color_4: 'red', color_5: 'white', project_id:1}
@@ -56,23 +56,23 @@ app.post('/api/v1/projects', (request, response) => {
   return response.status(201).json({id})
 })
 
-app.get('/api/v1/projects/:project_id/pallets', (request, response) => {
-  const pallets = app.locals.pallets
-  console.log(pallets)
+app.get('/api/v1/projects/:project_id/paletes', (request, response) => {
+  const palettes = app.locals.paletts
+  console.log(palettes)
   const id = parseInt(request.params.project_id)
-  const foundPallets = pallets.filter(pallet => pallet.project_id === id)
-  if(!foundPallets) {
+  const foundPalettes = palettes.filter(pallet => pallet.project_id === id)
+  if(!foundPalettes) {
     return response.status(404).json({
       error: `Project with an id of ${id} was not found.`
     })
   }
-  return response.status(200).json(foundPallets)
+  return response.status(200).json(foundPalettes)
 })
 
-app.post('/api/v1/projects/:project_id/pallets', (request, response) => {
+app.post('/api/v1/projects/:project_id/palettes', (request, response) => {
   const pallet = request.body
   const project_id  = parseInt(request.params.project_id)
-  const id = app.locals.pallets[app.locals.pallets.length - 1].id + 1;
+  const id = app.locals.palettes[app.locals.palettes.length - 1].id + 1;
 
   for(let requiredParameter of ['color_1', 'color_2', 'color_3', 'color_4', 'color_5']) {
     if(!pallet[requiredParameter]) {
@@ -82,7 +82,7 @@ app.post('/api/v1/projects/:project_id/pallets', (request, response) => {
     } 
   }
 
-  app.locals.pallets.push({ id, ...pallet, project_id})
+  app.locals.palettes.push({ id, ...pallet, project_id})
 
   return response.status(201).json({id})
 })
