@@ -28,3 +28,4 @@ const randomizeColors = () => {
 }
 
 randomizeBtn.addEventListener('click', randomizeColors)
+
