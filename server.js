@@ -61,17 +61,27 @@ app.post('/api/v1/projects', (request, response) => {
   return response.status(201).json({id})
 })
 
-app.get('/api/v1/projects/:project_id/paletes', (request, response) => {
-  const palettes = app.locals.paletts
-  console.log(palettes)
-  const id = parseInt(request.params.project_id)
-  const foundPalettes = palettes.filter(pallet => pallet.project_id === id)
-  if(!foundPalettes) {
-    return response.status(404).json({
-      error: `Project with an id of ${id} was not found.`
+// app.get('/api/v1/projects/:project_id/palettes', (request, response) => {
+//   const palettes = app.locals.palettes
+//   console.log(palettes)
+//   const id = parseInt(request.params.project_id)
+//   const foundPalettes = palettes.filter(pallet => pallet.project_id === id)
+//   if(!foundPalettes) {
+//     return response.status(404).json({
+//       error: `Project with an id of ${id} was not found.`
+//     })
+//   }
+//   return response.status(200).json(foundPalettes)
+// })
+
+app.get('/api/v1/projects/:project_id/palettes', (request, response) => {
+  database('palettes').where('project_id', request.params.project_id).select()
+    .then((palettes) => {
+      response.status(200).json(palettes)
     })
-  }
-  return response.status(200).json(foundPalettes)
+    .catch((error) => {
+      response.status(500).json({ error })
+    })
 })
 
 app.post('/api/v1/projects/:project_id/palettes', (request, response) => {

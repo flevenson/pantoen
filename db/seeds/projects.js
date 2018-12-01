@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
             color_3: 'orange', 
             color_4: 'magenta', 
             color_5: 'cornflowerblue', 
-            project_id: projects[0]
+            project_id: project[0]
           }, 'id')
         })
         .then(() => console.log('Properly Seeded :D'))
