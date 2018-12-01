@@ -37,29 +37,18 @@ app.get('/api/v1/projects', (request, response) => {
 app.get('/api/v1/projects/:id', (request, response) => {
   database('projects').where('id', request.params.id).select()
     .then((projects) => {
-      response.status(200).json(projects)
+      if(projects.length){
+        response.status(200).json(projects)
+      } else {
+        response.status(404).json({
+          error: `Could not find project with id ${request.params.id}`
+        })
+      }
     })
     .catch((error) => {
       response.status(500).json({ error })
     })
 })
-
-// app.post('/api/v1/projects', (request, response) => {
-//   const project = request.body;
-//   const id = app.locals.projects[app.locals.projects.length - 1].id + 1;
-
-//   for(let requiredParameter of ['name']) {
-//     if(!project[requiredParameter]) {
-//       return response.status(422).json({
-//         error: `Expected format: {name: <STRING>}. Missing the required parameter of ${requiredParameter}.`
-//       })
-//     }
-//   }
-
-//   app.locals.projects.push({ id, ...project})
-
-//   return response.status(201).json({id})
-// })
 
 app.post('/api/v1/projects', (request, response) => {
   const project = request.body;
@@ -83,7 +72,13 @@ app.post('/api/v1/projects', (request, response) => {
 app.get('/api/v1/projects/:project_id/palettes', (request, response) => {
   database('palettes').where('project_id', request.params.project_id).select()
     .then((palettes) => {
-      response.status(200).json(palettes)
+      if(palettes.length){
+        response.status(200).json(palettes)
+      } else {
+        response.status(404).json({
+          error: `Could not find projects with project id of ${request.params.project_id}`
+        })
+      }
     })
     .catch((error) => {
       response.status(500).json({ error })
