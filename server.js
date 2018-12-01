@@ -25,21 +25,23 @@ app.locals.palettes = [
 app.set('port', process.env.PORT || 3000);
 
 app.get('/api/v1/projects', (request, response) => {
-  const projects = app.locals.projects;
-
-  return response.status(200).json(projects)
+  database('projects').select()
+    .then((projects) => {
+      response.status(200).json(projects)      
+    })
+    .catch((error) => {
+      response.status(500).json({ error })
+    })
 })
 
 app.get('/api/v1/projects/:id', (request, response) => {
-  const projects = app.locals.projects
-  const id = parseInt(request.params.id)
-  const foundProject = projects.find(project => project.id === id)
-  if (!foundProject) {
-    return response.status(404).json({
-      error: `Project with an id of ${id} was not found.`
+  database('projects').where('id', request.params.id).select()
+    .then((projects) => {
+      response.status(200).json(projects)
     })
-  }
-  return response.status(200).json(foundProject)
+    .catch((error) => {
+      response.status(500).json({ error })
+    })
 })
 
 app.post('/api/v1/projects', (request, response) => {
