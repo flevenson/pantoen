@@ -44,35 +44,41 @@ app.get('/api/v1/projects/:id', (request, response) => {
     })
 })
 
+// app.post('/api/v1/projects', (request, response) => {
+//   const project = request.body;
+//   const id = app.locals.projects[app.locals.projects.length - 1].id + 1;
+
+//   for(let requiredParameter of ['name']) {
+//     if(!project[requiredParameter]) {
+//       return response.status(422).json({
+//         error: `Expected format: {name: <STRING>}. Missing the required parameter of ${requiredParameter}.`
+//       })
+//     }
+//   }
+
+//   app.locals.projects.push({ id, ...project})
+
+//   return response.status(201).json({id})
+// })
+
 app.post('/api/v1/projects', (request, response) => {
   const project = request.body;
-  const id = app.locals.projects[app.locals.projects.length - 1].id + 1;
 
-  for(let requiredParameter of ['name']) {
+  for (let requiredParameter of ['name']) {
     if(!project[requiredParameter]) {
-      return response.status(422).json({
-        error: `Expected format: {name: <STRING>}. Missing the required parameter of ${requiredParameter}.`
+      return response.status(422).send({
+        error: `Expected format: { name: <STRING> } missing ${requiredParameter}`
       })
     }
   }
-
-  app.locals.projects.push({ id, ...project})
-
-  return response.status(201).json({id})
+  database('projects').insert(project, 'id')
+    .then(project => {
+      response.status(201).json({ id: project[0]})
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
 })
-
-// app.get('/api/v1/projects/:project_id/palettes', (request, response) => {
-//   const palettes = app.locals.palettes
-//   console.log(palettes)
-//   const id = parseInt(request.params.project_id)
-//   const foundPalettes = palettes.filter(pallet => pallet.project_id === id)
-//   if(!foundPalettes) {
-//     return response.status(404).json({
-//       error: `Project with an id of ${id} was not found.`
-//     })
-//   }
-//   return response.status(200).json(foundPalettes)
-// })
 
 app.get('/api/v1/projects/:project_id/palettes', (request, response) => {
   database('palettes').where('project_id', request.params.project_id).select()
