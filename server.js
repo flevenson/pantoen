@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const environment = process.env.NODE_ENV || 'development';
+const configuration = require('./knexfile')[environment];
+const database = require('knex')(configuration);
 
 app.use(bodyParser.json());
 
@@ -14,9 +17,9 @@ app.locals.projects = [
 ]
 
 app.locals.palettes = [
-{id:1, color_1: 'red', color_2: 'blue', color_3: 'orange', color_4: 'magenta', color_5: 'cornflowerblue', project_id:1},
-{id:2, color_1: 'yellow', color_2: 'white', color_3: 'grey', color_4: 'orange', color_5: 'pink', project_id:2},
-{id:3, color_1: 'pink', color_2: 'black', color_3: 'blue', color_4: 'red', color_5: 'white', project_id:1}
+{name: 'pallete one', id:1, color_1: 'red', color_2: 'blue', color_3: 'orange', color_4: 'magenta', color_5: 'cornflowerblue', project_id:1},
+{name: 'pallete two', id:2, color_1: 'yellow', color_2: 'white', color_3: 'grey', color_4: 'orange', color_5: 'pink', project_id:2},
+{name: 'pallete three', id:3, color_1: 'pink', color_2: 'black', color_3: 'blue', color_4: 'red', color_5: 'white', project_id:1}
 ]
 
 app.set('port', process.env.PORT || 3000);
@@ -74,7 +77,7 @@ app.post('/api/v1/projects/:project_id/palettes', (request, response) => {
   const project_id  = parseInt(request.params.project_id)
   const id = app.locals.palettes[app.locals.palettes.length - 1].id + 1;
 
-  for(let requiredParameter of ['color_1', 'color_2', 'color_3', 'color_4', 'color_5']) {
+  for(let requiredParameter of ['name', 'color_1', 'color_2', 'color_3', 'color_4', 'color_5']) {
     if(!pallet[requiredParameter]) {
       return response.status(422).json({
         error: `Expected format: {name:<STRING>}. Missing the required parameter of ${requiredParameter}.`
