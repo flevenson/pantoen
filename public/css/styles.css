@@ -8,7 +8,7 @@ body {
   background-color: #F6D9AB;
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  grid-template-rows:  83px 1fr;
+  grid-template-rows:  72px 1fr;
 }
 
 header, main, section {
@@ -33,7 +33,6 @@ h1 {
   font-family: 'Nova Mono', monospace;
   font-size: 3.5rem;
   color: #6A3C46;
-  margin: 12px;
 }
 
 article, section {
@@ -41,7 +40,7 @@ article, section {
 }
 
 .controls {
-  margin-bottom: 12.5px;
+  margin-bottom: 11px;
   height: 46px;
   justify-content: space-around;
   display: flex;
@@ -62,6 +61,22 @@ article {
 
 .first-color {
   margin-top: 20px;
+}
+
+.second-color {
+  background-color: #CDDDDC;
+}
+
+.third-color {
+  background-color: #F6D9CB;
+}
+
+.fourth-color {
+  background-color: #FDEDC9;
+}
+
+.fifth-color {
+  background-color: #6A3C46;
 }
 
 .hex-info {

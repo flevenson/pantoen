@@ -13,7 +13,10 @@
     <main>
       <section class='controls'>
         <p>Lets cook up some color schemes</p>
-        <button class='randomize-btn'>COOK</button>
+        <div class='btn-holder'>
+          <button class='randomize-btn'>COOK</button>
+          <button class='save-btn'>SAVE</button>
+        </div>
       </section>
       <article>
         <section>
@@ -29,7 +32,7 @@
           </div>
           <div class='hex-info'>
             <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+            <p class='hex-code'>#CDDDDC</p>
           </div>
         </section>
         <section>
@@ -37,7 +40,7 @@
           </div>
           <div class='hex-info'>
             <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+            <p class='hex-code'>#F6D9CB</p>
           </div>
         </section>
         <section>
@@ -45,7 +48,7 @@
           </div>
           <div class='hex-info'>
             <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+            <p class='hex-code'>#FDEDC9</p>
           </div>
         </section>
         <section>
@@ -53,13 +56,21 @@
           </div>
           <div class='hex-info'>
             <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+            <p class='hex-code'>#6A3C46</p>
           </div>
         </section>
       </article>
     </main>
-    <aside>
-      <h2>Projects</h2>
+    <aside class='side-controls'>
+      <div class='create-project-controls'>
+       <h3>Create New Project</h3>
+       <input placeholder="My Awesome App" />
+       <button>CREATE</button>
+      </div>
+      <div class='projects-holder'>
+        <h2>Projects</h2>
+
+      </div>
     </aside>
     <script type='text/javascript' src='js/scripts.js'></script>
   </body>
