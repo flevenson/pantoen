@@ -70,13 +70,13 @@ app.post('/api/v1/projects', (request, response) => {
 })
 
 app.get('/api/v1/projects/:project_id/palettes', (request, response) => {
-  database('palettes').where('project_id', request.params.project_id).select()
+  database('palettes').where('project_id', parseInt(request.params.project_id)).select()
     .then((palettes) => {
       if(palettes.length){
         response.status(200).json(palettes)
       } else {
         response.status(404).json({
-          error: `Could not find projects with project id of ${request.params.project_id}`
+          error: `Could not find palettes with project id of ${request.params.project_id}`
         })
       }
     })
@@ -85,24 +85,44 @@ app.get('/api/v1/projects/:project_id/palettes', (request, response) => {
     })
 })
 
+// app.post('/api/v1/projects/:project_id/palettes', (request, response) => {
+//   const pallet = request.body
+//   const project_id  = parseInt(request.params.project_id)
+//   const id = app.locals.palettes[app.locals.palettes.length - 1].id + 1;
+
+//   for(let requiredParameter of ['name', 'color_1', 'color_2', 'color_3', 'color_4', 'color_5']) {
+//     if(!pallet[requiredParameter]) {
+//       return response.status(422).json({
+//         error: `Expected format: {name:<STRING>}. Missing the required parameter of ${requiredParameter}.`
+//       })
+//     } 
+//   }
+
+//   app.locals.palettes.push({ id, ...pallet, project_id})
+
+//   return response.status(201).json({id})
+// })
+
 app.post('/api/v1/projects/:project_id/palettes', (request, response) => {
-  const pallet = request.body
-  const project_id  = parseInt(request.params.project_id)
-  const id = app.locals.palettes[app.locals.palettes.length - 1].id + 1;
+  const palette = request.body
+  const project_id = parseInt(request.params.project_id)
 
   for(let requiredParameter of ['name', 'color_1', 'color_2', 'color_3', 'color_4', 'color_5']) {
-    if(!pallet[requiredParameter]) {
+    if(!palette[requiredParameter]) {
       return response.status(422).json({
-        error: `Expected format: {name:<STRING>}. Missing the required parameter of ${requiredParameter}.`
+        error: `Expected format: { name: <STRING>, color_1: <STRING>, color_2: <STRING>, color_3: <STRING>, color_4: <STRING>, color_5 <STRING> } missing ${requiredParameter}`
       })
-    } 
+    }
   }
 
-  app.locals.palettes.push({ id, ...pallet, project_id})
-
-  return response.status(201).json({id})
+  database('palettes').insert({...palette, project_id}, 'id')
+    .then(palette => {
+      response.status(201).json({ id: palette[0] })  
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
 })
-
 
 app.listen(app.get('port'), () => {
   console.log(`App is running on ${app.get('port')}`)
