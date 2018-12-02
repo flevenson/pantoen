@@ -56,6 +56,10 @@ button {
   padding: 0px;
 }
 
+input {
+  font-size: .8rem;
+}
+
 button:active, input:active, button:focus, input:focus {
   outline: none;
 }
@@ -133,6 +137,10 @@ article {
 
 .lock {
   height: 40px;
+}
+
+.lock:hover {
+  cursor: pointer;
 }
 
 aside {

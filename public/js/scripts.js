@@ -2,6 +2,7 @@ const randomizeBtn = document.querySelector('.randomize-btn')
 const saveBtn = document.querySelector('.save-btn')
 const createProjectBtn = document.querySelector('.create-project-btn')
 const projectNameInput = document.querySelector('.project-name-input')
+const locks = document.querySelectorAll('.lock')
 
 const randomHexGenerator = () => {
   let digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
@@ -29,6 +30,16 @@ const randomizeColors = () => {
   })
 }
 
+const toggleLock = () => {
+  event.target.parentNode.parentNode.children[0].classList.toggle('unlocked')
+  if(event.target.parentNode.parentNode.children[0].classList.contains('unlocked')){
+    event.target.src='./assets/turquoise-lock.svg'
+  } else {
+    event.target.src='./assets/maroon-lock.svg'
+  }
+}
+
+locks.forEach(lock => lock.addEventListener('click', toggleLock))
 randomizeBtn.addEventListener('click', randomizeColors)
 
-const createProject = (event)
+// const createProject = (event)
