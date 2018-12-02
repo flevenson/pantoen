@@ -7,7 +7,7 @@
 body {
   background-color: #F6D9AB;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 33% 34% 33%;
   grid-template-rows:  72px 1fr;
 }
 
@@ -39,11 +39,46 @@ article, section {
   width: 300px;
 }
 
+.btn-holder {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  width: 150px;
+  height: 30px;
+  border-radius: 50px;
+  color: #6A3C46;
+  background-color: #CDDDDC;
+  border: solid #6A3C46 2px;
+  font-size: 1rem;
+  padding: 0px;
+}
+
+button:active, input:active, button:focus, input:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #F6D9CB;
+}
+
+button:active {
+  background-color: #7D515A;
+}
+
 .controls {
   margin-bottom: 11px;
   height: 46px;
   justify-content: space-around;
   display: flex;
+}
+
+.instructions {
+  margin-bottom: 5px;
+  color: #7D515A;
 }
 
 article {
@@ -103,6 +138,34 @@ article {
 aside {
   grid-column: 1 / span 1;
   grid-row: 2 / span 2;
+}
+
+.create-project-controls {
+  margin-left: 20px;
+}
+
+.create-project-heading {
+  font-size: 2rem;
+  font-family: 'Nova Mono', monospace;
+  color: #7D515A;
+  margin-bottom: 12px;
+}
+
+.project-name-input {
+  width: 150px;
+  height: 32px;
+  border-radius: 50px;
+  color: #6A3C46;
+  background-color: #FFF;
+  padding: 12px;
+}
+
+.create-project-form {
+  width: 322px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
 
 h2 {
