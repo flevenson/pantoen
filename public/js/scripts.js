@@ -65,9 +65,14 @@ const preventDefault = (event) => {
   event.preventDefault()
 }
 
+const clearProjectInput = () => {
+  projectNameInput.value = ''
+}
+
 locks.forEach(lock => lock.addEventListener('click', toggleLock))
 randomizeBtn.addEventListener('click', randomizeColors)
 createProjectBtn.addEventListener('click', preventDefault)
 createProjectBtn.addEventListener('click', createProject)
+createProjectBtn.addEventListener('click', clearProjectInput)
 
 // const createProject = (event)
