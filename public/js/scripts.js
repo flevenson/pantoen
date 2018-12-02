@@ -39,7 +39,35 @@ const toggleLock = () => {
   }
 }
 
+const createProject = async () => {
+  let url = '/api/v1/projects'
+  let project = {
+    name: projectNameInput.value 
+  }
+  try {
+    let response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(project),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return await response.json()
+  } catch(error) {
+    return `Error: ${error}`
+  }
+}
+
+const preventDefault = (event) => {
+  event.preventDefault()
+}
+
 locks.forEach(lock => lock.addEventListener('click', toggleLock))
 randomizeBtn.addEventListener('click', randomizeColors)
+createProjectBtn.addEventListener('click', preventDefault)
+createProjectBtn.addEventListener('click', createProject)
 
 // const createProject = (event)
