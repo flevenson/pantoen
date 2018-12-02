@@ -79,14 +79,25 @@ article {
   background-color: #6A3C46;
 }
 
-.hex-info {
+.hex-controls {
   height: 50px;
   width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hex-info {
+  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
   font-family: 'Helvetica', sans-serif;
+}
+
+.lock {
+  height: 40px;
 }
 
 aside {

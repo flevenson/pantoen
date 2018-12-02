@@ -1,5 +1,7 @@
 const randomizeBtn = document.querySelector('.randomize-btn')
-
+const saveBtn = document.querySelector('.save-btn')
+const createProjectBtn = document.querySelector('.create-project-btn')
+const projectNameInput = document.querySelector('.project-name-input')
 
 const randomHexGenerator = () => {
   let digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
@@ -29,3 +31,4 @@ const randomizeColors = () => {
 
 randomizeBtn.addEventListener('click', randomizeColors)
 
+const createProject = (event)
