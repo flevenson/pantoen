@@ -40,6 +40,13 @@ const toggleLock = () => {
   }
 }
 
+const createProjectHeading = (project) => {
+  let projectHeading = document.createElement('li')
+  projectHeading.classList.add('project-heading')
+  projectHeading.innerText = project.name
+  projectsNamesHolder.append(projectHeading)
+}
+
 const createProject = async () => {
   let url = '/api/v1/projects'
   let project = {
@@ -56,11 +63,14 @@ const createProject = async () => {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
+    createProjectHeading(project)
     return await response.json()
   } catch(error) {
     return `Error: ${error}`
   }
 }
+
+
 
 const preventDefault = (event) => {
   event.preventDefault()
@@ -84,10 +94,7 @@ const populateProjects = async () => {
       }
       })
     projects.forEach(project => {
-      let projectHeading = document.createElement('li')
-      projectHeading.classList.add('project-heading')
-      projectHeading.innerText = project.name
-      projectsNamesHolder.append(projectHeading)
+      createProjectHeading(project)
     })
   }
 }
