@@ -182,3 +182,10 @@ h2 {
     margin-left: 20px;
     color: #7D515A;
 }
+
+.project-heading {
+  font-size: 1.5rem;
+  font-family: 'Nova Mono';
+  margin-left: 20px;
+  color: #6A3C46;
+}

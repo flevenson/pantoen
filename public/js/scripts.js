@@ -3,6 +3,7 @@ const saveBtn = document.querySelector('.save-btn')
 const createProjectBtn = document.querySelector('.create-project-btn')
 const projectNameInput = document.querySelector('.project-name-input')
 const locks = document.querySelectorAll('.lock')
+const projectsNamesHolder = document.querySelector('.projects-names-holder')
 
 const randomHexGenerator = () => {
   let digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
@@ -68,6 +69,30 @@ const preventDefault = (event) => {
 const clearProjectInput = () => {
   projectNameInput.value = ''
 }
+
+const populateProjects = async () => {
+  let url = '/api/v1/projects'
+  let response = await fetch(url)
+  if (!response.ok) {
+    throw new Error(response.statusText)
+  } else {
+    let results = await response.json();
+    let projects = results.map(project => {
+      return {
+        name: project.name, 
+        id: project.id
+      }
+      })
+    projects.forEach(project => {
+      let projectHeading = document.createElement('li')
+      projectHeading.classList.add('project-heading')
+      projectHeading.innerText = project.name
+      projectsNamesHolder.append(projectHeading)
+    })
+  }
+}
+
+populateProjects()
 
 locks.forEach(lock => lock.addEventListener('click', toggleLock))
 randomizeBtn.addEventListener('click', randomizeColors)
