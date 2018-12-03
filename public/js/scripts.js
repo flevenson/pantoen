@@ -113,6 +113,7 @@ const fetchProjects = async () => {
 const createPaletteHTML = (projectID, palette) => {
   let correspondingHeading = document.querySelector(`.project${projectID}`)
   let colorHolder = document.createElement('ul')
+  colorHolder.classList.add('color-holder')
   colorHolder.setAttribute('style', 'display: flex; align-items: center; margin-left: 20px; margin-bottom: 20px;')
   let color1 = createColorLi(palette.color_1)
   let color2 = createColorLi(palette.color_2)
@@ -125,7 +126,7 @@ const createPaletteHTML = (projectID, palette) => {
 
 const createColorLi = (paletteColor) => {
   let color = document.createElement('li')
-  color.setAttribute('style', `background-color: ${paletteColor}; height: 30px; width: 30px;`)
+  color.setAttribute('style', `background-color: ${paletteColor}; height: 30px; width: 30px; margin-right: 10px;`)
   return color
 }
 

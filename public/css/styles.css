@@ -161,7 +161,6 @@ aside {
   font-family: 'Nova Mono', monospace;
   color: #7D515A;
   margin-bottom: 12px;
-  margin-top: 60px;
 }
 
 .create-project-btn {
@@ -190,7 +189,6 @@ h2 {
     font-family: 'Nova Mono';
     margin-left: 20px;
     color: #7D515A;
-    margin-bottom: 20px;
 }
 
 .project-heading {
@@ -199,4 +197,12 @@ h2 {
   margin-left: 20px;
   color: #6A3C46;
   margin-bottom: 20px;
+}
+
+.color-holder {
+  width: 180px;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0px 0px 4px 1px #0000004d;
 }
