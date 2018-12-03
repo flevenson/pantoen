@@ -189,6 +189,8 @@ h2 {
     font-family: 'Nova Mono';
     margin-left: 20px;
     color: #7D515A;
+    margin-bottom: 12px;
+
 }
 
 .project-heading {
@@ -196,7 +198,7 @@ h2 {
   font-family: 'Nova Mono';
   margin-left: 20px;
   color: #6A3C46;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .color-holder {

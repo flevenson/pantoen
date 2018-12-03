@@ -48,7 +48,7 @@ const createProjectHeading = (project) => {
   let projectHeading = document.createElement('li')
   projectHeading.classList.add('project-heading')
   projectHeading.innerText = project.name
-  projectsNamesHolder.append(projectHolder)
+  projectsNamesHolder.prepend(projectHolder)
   let correspondingProjectHolder = document.querySelector(`.project${project.id}`)
   correspondingProjectHolder.append(projectHeading)
 }
@@ -114,7 +114,7 @@ const createPaletteHTML = (projectID, palette) => {
   let correspondingHeading = document.querySelector(`.project${projectID}`)
   let colorHolder = document.createElement('ul')
   colorHolder.classList.add('color-holder')
-  colorHolder.setAttribute('style', 'display: flex; align-items: center; margin-left: 20px; margin-bottom: 20px;')
+  colorHolder.setAttribute('style', 'display: flex; align-items: center; margin-left: 20px; margin-bottom: 12px;')
   let color1 = createColorLi(palette.color_1)
   let color2 = createColorLi(palette.color_2)
   let color3 = createColorLi(palette.color_3)
