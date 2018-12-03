@@ -46,7 +46,7 @@ article, section {
 }
 
 button {
-  width: 150px;
+  width: 68px;
   height: 30px;
   border-radius: 50px;
   color: #6A3C46;
@@ -78,6 +78,10 @@ button:active {
   height: 46px;
   justify-content: space-around;
   display: flex;
+}
+
+.top-input {
+  width: 78px;
 }
 
 .instructions {
@@ -157,9 +161,14 @@ aside {
   font-family: 'Nova Mono', monospace;
   color: #7D515A;
   margin-bottom: 12px;
+  margin-top: 60px;
 }
 
-.project-name-input {
+.create-project-btn {
+  width: 150px;
+}
+
+input {
   width: 150px;
   height: 32px;
   border-radius: 50px;
@@ -181,11 +190,13 @@ h2 {
     font-family: 'Nova Mono';
     margin-left: 20px;
     color: #7D515A;
+    margin-bottom: 20px;
 }
 
 .project-heading {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: 'Nova Mono';
   margin-left: 20px;
   color: #6A3C46;
+  margin-bottom: 20px;
 }
