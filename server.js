@@ -85,23 +85,6 @@ app.get('/api/v1/projects/:project_id/palettes', (request, response) => {
     })
 })
 
-// app.post('/api/v1/projects/:project_id/palettes', (request, response) => {
-//   const pallet = request.body
-//   const project_id  = parseInt(request.params.project_id)
-//   const id = app.locals.palettes[app.locals.palettes.length - 1].id + 1;
-
-//   for(let requiredParameter of ['name', 'color_1', 'color_2', 'color_3', 'color_4', 'color_5']) {
-//     if(!pallet[requiredParameter]) {
-//       return response.status(422).json({
-//         error: `Expected format: {name:<STRING>}. Missing the required parameter of ${requiredParameter}.`
-//       })
-//     } 
-//   }
-
-//   app.locals.palettes.push({ id, ...pallet, project_id})
-
-//   return response.status(201).json({id})
-// })
 
 app.post('/api/v1/projects/:project_id/palettes', (request, response) => {
   const palette = request.body

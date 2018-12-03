@@ -7,8 +7,8 @@
 body {
   background-color: #F6D9AB;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows:  83px 1fr;
+  grid-template-columns: 33% 34% 33%;
+  grid-template-rows:  72px 1fr;
 }
 
 header, main, section {
@@ -33,18 +33,60 @@ h1 {
   font-family: 'Nova Mono', monospace;
   font-size: 3.5rem;
   color: #6A3C46;
-  margin: 12px;
 }
 
 article, section {
   width: 300px;
 }
 
+.btn-holder {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  width: 68px;
+  height: 30px;
+  border-radius: 50px;
+  color: #6A3C46;
+  background-color: #CDDDDC;
+  border: solid #6A3C46 2px;
+  font-size: 1rem;
+  padding: 0px;
+}
+
+input {
+  font-size: .8rem;
+}
+
+button:active, input:active, button:focus, input:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #F6D9CB;
+}
+
+button:active {
+  background-color: #7D515A;
+}
+
 .controls {
-  margin-bottom: 12.5px;
+  margin-bottom: 11px;
   height: 46px;
   justify-content: space-around;
   display: flex;
+}
+
+.top-input {
+  width: 78px;
+}
+
+.instructions {
+  margin-bottom: 5px;
+  color: #7D515A;
 }
 
 article {
@@ -64,9 +106,32 @@ article {
   margin-top: 20px;
 }
 
-.hex-info {
+.second-color {
+  background-color: #CDDDDC;
+}
+
+.third-color {
+  background-color: #F6D9CB;
+}
+
+.fourth-color {
+  background-color: #FDEDC9;
+}
+
+.fifth-color {
+  background-color: #6A3C46;
+}
+
+.hex-controls {
   height: 50px;
   width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hex-info {
+  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -74,9 +139,50 @@ article {
   font-family: 'Helvetica', sans-serif;
 }
 
+.lock {
+  height: 40px;
+}
+
+.lock:hover {
+  cursor: pointer;
+}
+
 aside {
   grid-column: 1 / span 1;
   grid-row: 2 / span 2;
+}
+
+.create-project-controls {
+  margin-left: 20px;
+}
+
+.create-project-heading {
+  font-size: 2rem;
+  font-family: 'Nova Mono', monospace;
+  color: #7D515A;
+  margin-bottom: 12px;
+  margin-top: 60px;
+}
+
+.create-project-btn {
+  width: 150px;
+}
+
+input {
+  width: 150px;
+  height: 32px;
+  border-radius: 50px;
+  color: #6A3C46;
+  background-color: #FFF;
+  padding: 12px;
+}
+
+.create-project-form {
+  width: 322px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
 
 h2 {
@@ -84,4 +190,13 @@ h2 {
     font-family: 'Nova Mono';
     margin-left: 20px;
     color: #7D515A;
+    margin-bottom: 20px;
+}
+
+.project-heading {
+  font-size: 1.2rem;
+  font-family: 'Nova Mono';
+  margin-left: 20px;
+  color: #6A3C46;
+  margin-bottom: 20px;
 }

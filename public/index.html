@@ -1,65 +1,96 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Express Intro</title>
+    <title>Pantoen</title>
     <link rel="stylesheet" href="./css/reset.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Gabriela|Nova+Mono" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
   </head>
   <body>
     <header>
-      <h1>PanToe.n</h1>
+      <h1>PanToen</h1>
     </header>
     <main>
       <section class='controls'>
-        <p>Lets cook up some color schemes</p>
-        <button class='randomize-btn'>COOK</button>
+        <p class='instructions'>Lets cook up some color schemes</p>
+        <div class='btn-holder'>
+          <button class='randomize-btn'>COOK</button>
+          <input placeholder="Project Name" class='top-input project-name-palette'/>
+          <input placeholder="Palette Name" class='top-input palette-name-palette'/>
+          <button class='save-btn'>SAVE</button>
+        </div>
       </section>
       <article>
         <section>
           <div class='color first-color unlocked'>
           </div>
-          <div class='hex-info'>
-            <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+          <div class='hex-controls'>
+            <div class='hex-info'>
+              <h5>HEX COLOR</h5>
+              <p class='hex-code'>#7D515A</p>
+            </div>
+            <img class='lock' src="./assets/turquoise-lock.svg" alt="lock-button">
           </div>
         </section>
         <section>
           <div class='color second-color unlocked'>
           </div>
-          <div class='hex-info'>
-            <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+          <div class='hex-controls'>
+            <div class='hex-info'>
+              <h5>HEX COLOR</h5>
+              <p class='hex-code'>#CDDDDC</p>
+            </div>
+            <img class='lock' src="./assets/turquoise-lock.svg" alt="lock-button">
           </div>
         </section>
         <section>
           <div class='color third-color unlocked'>
           </div>
-          <div class='hex-info'>
-            <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+          <div class='hex-controls'>
+            <div class='hex-info'>
+              <h5>HEX COLOR</h5>
+              <p class='hex-code'>#F6D9CB</p>
+            </div>
+            <img class='lock' src="./assets/turquoise-lock.svg" alt="lock-button">
           </div>
         </section>
         <section>
           <div class='color fourth-color unlocked'>
           </div>
-          <div class='hex-info'>
-            <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+          <div class='hex-controls'>
+            <div class='hex-info'>
+              <h5>HEX COLOR</h5>
+              <p class='hex-code'>#FDEDC9</p>
+            </div>
+            <img class='lock' src="./assets/turquoise-lock.svg" alt="lock-button">
           </div>
         </section>
         <section>
           <div class='color fifth-color unlocked'>
           </div>
-          <div class='hex-info'>
-            <h5>HEX COLOR</h5>
-            <p class='hex-code'>#7D515A</p>
+          <div class='hex-controls'>
+            <div class='hex-info'>
+              <h5>HEX COLOR</h5>
+              <p class='hex-code'>#6A3C46</p>
+            </div>
+            <img class='lock' src="./assets/turquoise-lock.svg" alt="lock-button">
           </div>
         </section>
       </article>
     </main>
-    <aside>
-      <h2>Projects</h2>
+    <aside class='side-controls'>
+      <div class='create-project-controls'>
+        <h3 class='create-project-heading'>Create New Project</h3>
+        <form class='create-project-form'>
+          <input placeholder="My Awesome App" class='project-name-input' />
+          <button class='create-project-btn'>CREATE</button>
+        </form>
+      </div>
+      <div class='projects-holder'>
+        <h2>Projects</h2>
+        <ul class='projects-names-holder'>
+        </ul>
+      </div>
     </aside>
     <script type='text/javascript' src='js/scripts.js'></script>
   </body>
